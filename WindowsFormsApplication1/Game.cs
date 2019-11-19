@@ -20,10 +20,13 @@ namespace WindowsFormsApplication1
         int rn = 0;
         int rrn = 0;
         int a = 0;
+        int b = 0;
         //bool[] fire = new bool[6];
         int[] random = new int[3];
         int[] tru = new int[6];
         bool[] moving = new bool[3];
+        int cursorX = System.Windows.Forms.Cursor.Position.X;
+
         
 
 
@@ -127,72 +130,49 @@ namespace WindowsFormsApplication1
             rn = rnd.Next(2, 4) + 12;
             rrn = rnd.Next(4, 6) + 12;
 
-            if (a == 1 && )
-            {
-                shoot[0].exist = true;
-                moving[0] = true;
-                shoot[b] = new Shoot1();
-                shoot[b].exist = true;
-                shoot[b].shootX = aliens[r].alienX+25;
-                shoot[b].shootY = aliens[r].alienY + 35;
-                shoot[b].your = false;
-                b++;
+            aliens[r].active = true;
+            aliens[rn].active = true;
+            aliens[rrn].active = true;
 
-            }
-            if (a == 2)
+            for (int i = 0; i < 18; i++)
             {
-                shoot[1].exist = true;
-                moving[1] = true;
-                shoot[b] = new Shoot1();
-                shoot[b].exist = true;
-                shoot[b].shootX = aliens[rn].alienX+25;
-                shoot[b].shootY = aliens[rn].alienY + 35;
-                shoot[b].your = false;
-                b++;
-            }
-            if (a == 3)
-            {
-                shoot[2].exist = true;
-                moving[2] = true;
-                shoot[b] = new Shoot1();
-                shoot[b].exist = true;
-                shoot[b].shootX = aliens[rrn].alienX+25;
-                shoot[b].shootY = aliens[rrn].alienY + 35;
-                shoot[b].your = false;
-                b++;
-            }                 
+                
+                if (aliens[i].active && a == 1)
+                { 
+                    shoot[b].exist = true;
+                    shoot[b].shootX = aliens[i].alienX + 25;
+                    shoot[b].shootY = aliens[i].alienY + 50;
+                }
+            }       
 
-            //for (int i =0; i < 3; i++)
-            //{
-            //        shoot[b] = new Shoot1();
-            //        shoot[b].exist = true;
-            //        shoot[b].shootX = aliens[i].alienX;
-            //        shoot[b].shootY = aliens[i].alienY + 35;
-            //        shoot[b].your = false;
-            //        b++;
+        }
 
-            //    }
-            }
-            
 
         public void ShootMovement(int height)
         {
+
             for(int c = 0; c < 3; c++)
             {
-                if (moving[c])
+                if (shoot[c].exist)
+                {
                     for (int i = 0; i < 3; i++)
                     {
                         shoot[i].shootY += 35;
                     }
-                if (shoot[c].shootY == height)
+                }
+                if (shoot[c].shootY == height - 25)
                 {
-                    moving[c] = false;
+                    shoot[c].exist = false;
+                }
+                if (shoot[c].shootX > height - 90 && shoot[c].shootX < height - 50 && shoot[c].shootY < cursorX)
+                {
+
                 }
             }
             
         }
 
-        public void ShipShoot(object sender, KeyEventArgs e, int spiceShipX, int spiceShipY)
+        public void ShipShoot(object sender, KeyEventArgs e,int spiceShipX, int spiceShipY)
         {
             if (e.KeyCode == Keys.Space)
             {
