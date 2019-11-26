@@ -12,6 +12,7 @@ namespace WindowsFormsApplication1
     class Game
     {
 
+        Form1 form = new Form1();
         public Aliens[] aliens = new Aliens[18];
         bool f = true;
         public int[] up = new int[18];
@@ -155,16 +156,24 @@ namespace WindowsFormsApplication1
             {
                 if (shoot[c].exist)
                 {
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0;  i < 3; i++)
                     {
                         shoot[i].shootY += 35;
+
                     }
                 }
                 if (shoot[c].shootY == height - 25)
                 {
                     shoot[c].exist = false;
                 }
-                if (shoot[c].shootX > height - 90 && shoot[c].shootX < height - 50 && shoot[c].shootY < cursorX)
+                if (shoot[c].shootX < height - 90 && shoot[c].shootX > (height - 90) - 50 && shoot[c].shootY < cursorX && shoot[c].shootY > cursorX + 50) //поподание
+                {
+                    shoot[c].exist = false;
+                    shoot[c].tib = true;
+                    form.gameOver = true;
+                    
+                }
+                if (shoot[c].your)
                 {
 
                 }

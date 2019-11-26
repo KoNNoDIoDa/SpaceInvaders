@@ -19,6 +19,7 @@ namespace WindowsFormsApplication1
         int b = 0;
         bool deleted = false;
         int update;
+        public bool gameOver = false;
 
         public Form1()
         {
