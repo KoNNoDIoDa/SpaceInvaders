@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
         Bitmap SpaceShipTexture = Resource1.Space_Ship, AlienTexture = Resource1.Alien, alienShot = Resource1.shot_ship, shipShot = Resource1.shot_alien;
-        Game game=new Game();
+        Game game = new Game();
         int pozition;
         int i = 0;
         int b = 0;

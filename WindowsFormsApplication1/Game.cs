@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
     class Game
     {
 
-        Form1 form = new Form1();
+        //Form1 form = new Form1();
         public Aliens[] aliens = new Aliens[18];
         bool f = true;
         public int[] up = new int[18];
@@ -21,7 +21,6 @@ namespace WindowsFormsApplication1
         int rn = 0;
         int rrn = 0;
         int a = 0;
-        int b = 0;
         //bool[] fire = new bool[6];
         int[] random = new int[3];
         int[] tru = new int[6];
@@ -34,7 +33,6 @@ namespace WindowsFormsApplication1
 
         public Game()
         {
-           
             int x = 0, y = 10,c=0;
 
             for (int a = 0; a < 3; a++)
@@ -126,27 +124,35 @@ namespace WindowsFormsApplication1
 
             Random rnd = new Random();
 
-            a = rnd.Next(9);
-            r = rnd.Next(2) + 12;
-            rn = rnd.Next(2, 4) + 12;
-            rrn = rnd.Next(4, 6) + 12;
+            r = rnd.Next(0,2);
+            rn = rnd.Next(1,4);
+            rrn = rnd.Next(3,6);
 
-            aliens[r].active = true;
-            aliens[rn].active = true;
-            aliens[rrn].active = true;
-
+            aliens[r + 12].active = true;
+            aliens[rn + 12].active = true;
+            aliens[rrn + 12].active = true;
+   
             for (int i = 0; i < 18; i++)
             {
                 
-                if (aliens[i].active && a == 1)
+                if (aliens[i].active && !shoot[b].exist)
                 { 
                     shoot[b].exist = true;
                     shoot[b].shootX = aliens[i].alienX + 25;
                     shoot[b].shootY = aliens[i].alienY + 50;
+                    b++;
                 }
-            }       
 
-        }
+            }
+            aliens[r + 12].active = false;
+            aliens[rn + 12].active = false;
+            aliens[rrn + 12].active = false;
+
+                if (b > 2)
+                {
+                    b = 0;
+                }
+            }
 
 
         public void ShootMovement(int height)
@@ -162,7 +168,7 @@ namespace WindowsFormsApplication1
 
                     }
                 }
-                if (shoot[c].shootY == height - 25)
+                if (shoot[c].shootY >= height - 25)
                 {
                     shoot[c].exist = false;
                 }
@@ -170,7 +176,7 @@ namespace WindowsFormsApplication1
                 {
                     shoot[c].exist = false;
                     shoot[c].tib = true;
-                    form.gameOver = true;
+                    //form.gameOver = true;
                     
                 }
                 if (shoot[c].your)
