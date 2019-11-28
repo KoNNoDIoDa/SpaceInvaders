@@ -124,6 +124,7 @@ namespace WindowsFormsApplication1
 
             Random rnd = new Random();
 
+
             r = rnd.Next(0,2);
             rn = rnd.Next(1,4);
             rrn = rnd.Next(3,6);
