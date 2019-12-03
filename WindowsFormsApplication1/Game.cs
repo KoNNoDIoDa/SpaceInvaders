@@ -21,6 +21,7 @@ namespace WindowsFormsApplication1
         int rn = 0;
         int rrn = 0;
         int a = 0;
+        public bool alive = true;
         //bool[] fire = new bool[6];
         int[] random = new int[3];
         int[] tru = new int[6];
@@ -173,10 +174,10 @@ namespace WindowsFormsApplication1
                 {
                     shoot[c].exist = false;
                 }
-                if (shoot[c].shootX < height - 90 && shoot[c].shootX > (height - 90) - 50 && shoot[c].shootY < cursorX && shoot[c].shootY > cursorX + 50) //поподание
+                if (shoot[c].shootX < height - 90 && shoot[c].shootX > (height - 90) - 50 && shoot[c].shootY < cursorX && shoot[c].shootY > cursorX + 50) //Поподание
                 {
                     shoot[c].exist = false;
-                    shoot[c].tib = true;
+                    alive = false;
                     //form.gameOver = true;
                     
                 }

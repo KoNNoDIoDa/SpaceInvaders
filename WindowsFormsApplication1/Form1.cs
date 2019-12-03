@@ -120,6 +120,11 @@ namespace WindowsFormsApplication1
             SpaceShipRect = new Rectangle(/*game.aliens[i].alienX, game.aliens[i].alienY*/localPosition.X, this.Height - 90, 50, 50); //Присвоение положения корабля
             e.Graphics.DrawImage(SpaceShipTexture, SpaceShipRect); //Положение корабля
 
+            if (!game.alive)
+            {
+
+            }
+
         }
     }
 }
