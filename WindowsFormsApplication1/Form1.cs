@@ -20,10 +20,11 @@ namespace WindowsFormsApplication1
         bool deleted = false;
         int update;
         public bool gameOver = false;
+        bool active = false;
 
         public Form1()
         {
-            for(int i = 0; i < 3; i++)
+            for(int i = 0; i < 4; i++)
             {
                 game.shoot[i] = new Shoot1();
             }
@@ -77,6 +78,11 @@ namespace WindowsFormsApplication1
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Space)
+            {
+                game.ShipShoot(this.Height);
+                active = true;
+            }
         }
 
         private void timer2_Tick(object sender, EventArgs e) //Передвижения иноплпнитянинов
@@ -112,6 +118,11 @@ namespace WindowsFormsApplication1
             {
                 //game.shoot[i] = new Shoot1();
                 g.DrawImage(alienShot, new Rectangle(game.shoot[i].shootX, game.shoot[i].shootY, 5, 35));
+            }
+            if (active)
+            {
+                 g.DrawImage(shipShot, new Rectangle(game.shoot[3].shootX, game.shoot[3].shootY, 5, 35));
+
             }
 
             //g.DrawImage(shipShot, new Rectangle(100, 100, 5, 35));

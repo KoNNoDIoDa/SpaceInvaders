@@ -16,11 +16,10 @@ namespace WindowsFormsApplication1
         public Aliens[] aliens = new Aliens[18];
         bool f = true;
         public int[] up = new int[18];
-        public Shoot1[] shoot = new Shoot1[3];
+        public Shoot1[] shoot = new Shoot1[4];
         int r = 0;
         int rn = 0;
         int rrn = 0;
-        int a = 0;
         public bool alive = true;
         //bool[] fire = new bool[6];
         int[] random = new int[3];
@@ -160,9 +159,9 @@ namespace WindowsFormsApplication1
         public void ShootMovement(int height)
         {
 
-            for(int c = 0; c < 3; c++)
+            for(int c = 0; c < 4; c++)
             {
-                if (shoot[c].exist)
+                if (shoot[c].exist && !shoot[c].your)
                 {
                     for (int i = 0;  i < 3; i++)
                     {
@@ -170,35 +169,40 @@ namespace WindowsFormsApplication1
 
                     }
                 }
-                if (shoot[c].shootY >= height - 25)
+
+                if (shoot[c].exist && shoot[c].your)
+                {
+                        shoot[c].shootY -= 35;
+                }
+
+                if (shoot[c].shootY >= height - 25 && !shoot[c].your)
                 {
                     shoot[c].exist = false;
                 }
-                if (shoot[c].shootX < height - 90 && shoot[c].shootX > (height - 90) - 50 && shoot[c].shootY < cursorX && shoot[c].shootY > cursorX + 50) //Поподание
+
+                if (shoot[c].shootY >= 0 && shoot[c].your)
+                {
+                    shoot[c].exist = false;
+                }
+
+                if (shoot[c].shootX < height - 90 && shoot[c].shootX > (height - 90) - 50 && shoot[c].shootY < cursorX && shoot[c].shootY > cursorX + 50 && !shoot[c].your) //Попадание
                 {
                     shoot[c].exist = false;
                     alive = false;
                     //form.gameOver = true;
                     
                 }
-                if (shoot[c].your)
-                {
-
-                }
             }
             
         }
 
-        public void ShipShoot(object sender, KeyEventArgs e,int spiceShipX, int spiceShipY)
+        public void ShipShoot(int height)
         {
-            if (e.KeyCode == Keys.Space)
-            {
                 shoot[3].exist = true;
-                shoot[3].shootX = spiceShipX;
-                shoot[3].shootY = spiceShipY;
+                shoot[3].shootX = cursorX;
+                shoot[3].shootY = height;
                 shoot[3].your = true;
 
-            }
         }
 
     }
