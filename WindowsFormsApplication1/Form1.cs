@@ -21,7 +21,6 @@ namespace WindowsFormsApplication1
         int update;
         public bool gameOver = false;
         bool active = false;
-        public int shipX = 0;
 
         public Form1()
         {
@@ -74,23 +73,15 @@ namespace WindowsFormsApplication1
 
         private void Timer3_Tick(object sender, EventArgs e)
         {
-            game.ShootMovement(this.Height, shipX);
+            game.ShootMovement(this.Height);
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Space || e.KeyCode == Keys.W)
+            if (e.KeyCode == Keys.Space)
             {
-                game.ShipShoot(this.Height, shipX);
+                game.ShipShoot(this.Height);
                 active = true;
-            }
-            if (e.KeyCode == Keys.D)
-            {
-                shipX += 35;
-            }
-            if (e.KeyCode == Keys.A)
-            {
-                shipX -= 35;
             }
         }
 
@@ -115,7 +106,7 @@ namespace WindowsFormsApplication1
             Graphics g = e.Graphics;
 
             var localPosition = this.PointToClient(Cursor.Position); //Присвоение положения инопланетянинов
-            var SpaceShipRect = new Rectangle(shipX, this.Height - 90, 50, 50); //Присвоение положения корабля
+            var SpaceShipRect = new Rectangle(localPosition.X, this.Height - 90, 50, 50); //Присвоение положения корабля
             e.Graphics.DrawImage(SpaceShipTexture, SpaceShipRect); //Положение корабля
 
             for (int i = 0; i < 18; i++)
@@ -130,14 +121,14 @@ namespace WindowsFormsApplication1
             }
             if (active)
             {
-                  g.DrawImage(shipShot, new Rectangle(game.shoot[3].shootX, game.shoot[3].shootY, 5, 35));
+                 g.DrawImage(shipShot, new Rectangle(game.shoot[3].shootX, game.shoot[3].shootY, 5, 35));
 
             }
 
             //g.DrawImage(shipShot, new Rectangle(100, 100, 5, 35));
             //g.DrawImage(alienShot, new Rectangle(200, 200, 5, 35));
 
-            //SpaceShipRect = new Rectangle(/*game.aliens[i].alienX, game.aliens[i].alienY*/ShipX, this.Height - 90, 50, 50); //Присвоение положения корабля
+            SpaceShipRect = new Rectangle(/*game.aliens[i].alienX, game.aliens[i].alienY*/localPosition.X, this.Height - 90, 50, 50); //Присвоение положения корабля
             e.Graphics.DrawImage(SpaceShipTexture, SpaceShipRect); //Положение корабля
 
             if (!game.alive)

@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
         int[] random = new int[3];
         int[] tru = new int[6];
         bool[] moving = new bool[3];
-        
+        int cursorX = System.Windows.Forms.Cursor.Position.X;
 
         
 
@@ -156,9 +156,10 @@ namespace WindowsFormsApplication1
             }
 
 
-        public void ShootMovement(int height, int shipX)
+        public void ShootMovement(int height)
         {
-            for (int c = 0; c < 4; c++)
+
+            for(int c = 0; c < 4; c++)
             {
                 if (shoot[c].exist && !shoot[c].your)
                 {
@@ -184,21 +185,22 @@ namespace WindowsFormsApplication1
                     shoot[c].exist = false;
                 }
 
-                if (shoot[c].shootX < height - 90 && shoot[c].shootX > (height - 90) - 50 && shoot[c].shootY < shipX && shoot[c].shootY > shipX + 50 && !shoot[c].your) //Попадание
+                if (shoot[c].shootX < height - 90 && shoot[c].shootX > (height - 90) - 50 && shoot[c].shootY < cursorX && shoot[c].shootY > cursorX + 50 && !shoot[c].your) //Попадание
                 {
                     shoot[c].exist = false;
                     alive = false;
+                    //form.gameOver = true;
                     
                 }
             }
             
         }
 
-        public void ShipShoot(int height, int shipX)
+        public void ShipShoot(int height)
         {
                 shoot[3].exist = true;
-                shoot[3].shootX = shipX + 22;
-                shoot[3].shootY = height - 90;
+                shoot[3].shootX = cursorX;
+                shoot[3].shootY = height;
                 shoot[3].your = true;
 
         }
