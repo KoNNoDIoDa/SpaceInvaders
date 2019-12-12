@@ -45,7 +45,7 @@ namespace WindowsFormsApplication1
                 | ControlStyles.AllPaintingInWmPaint
                 | ControlStyles.UserPaint, true);
 
-            game.AlienPosition();
+            //game.AlienPosition();
             pozition = this.Width - 50;
 
            
@@ -120,6 +120,7 @@ namespace WindowsFormsApplication1
 
             for (int i = 0; i < 18; i++)
             {
+                if (!game.aliens[i].deleted)
                 g.DrawImage(AlienTexture, new Rectangle(game.aliens[i].alienX, game.aliens[i].alienY, 50, 50));
             }
 

@@ -48,21 +48,31 @@ namespace WindowsFormsApplication1
                 x = 0;
                 y += 50;
             }
-        }
-
-
-        public void AlienPosition()
-        {
-            int x = 0, y = 0;
-            for (int e = 0; e <= 3; e++)
-            {
-                for (int i = 0; i < 18; i++)
+            for (int i = 0; i < 0; i++) {
+                for (int a = 0; a < 18; a++)
                 {
-                    x += 70;
+                    if (aliens[a].alienX == shoot[i].shootX && aliens[a].alienY == shoot[i].shootY && !aliens[a].deleted)
+                    {
+                        aliens[a].deleted = true;
+                    }
                 }
-                y += 70;
             }
         }
+
+
+        //public void AlienPosition()
+        //{
+        //    int x = 0, y = 0;
+        //    for (int e = 0; e <= 3; e++)
+        //    {
+        //        for (int i = 0; i < 18; i++)
+        //        {
+        //            x += 70;
+                    
+        //        }
+        //        y += 70;
+        //    }
+        //}
 
         public void Movement( int wdth)
         {
@@ -174,12 +184,12 @@ namespace WindowsFormsApplication1
                         shoot[c].shootY -= 35;
                 }
 
-                if (shoot[c].shootY >= height - 25 && !shoot[c].your)
+                if (shoot[c].shootY >= height && !shoot[c].your)
                 {
                     shoot[c].exist = false;
                 }
 
-                if (shoot[c].shootY >= 0 && shoot[c].your)
+                if (shoot[c].shootY <= 0 && shoot[c].your)
                 {
                     shoot[c].exist = false;
                 }
