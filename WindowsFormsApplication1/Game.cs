@@ -15,7 +15,7 @@ namespace WindowsFormsApplication1
         //Form1 form = new Form1();
         public Aliens[] aliens = new Aliens[18];
         bool f = true;
-        public int[] up = new int[18];
+        //public int[] up = new int[18];
         public Shoot1[] shoot = new Shoot1[4];
         int r = 0;
         int rn = 0;
@@ -48,15 +48,15 @@ namespace WindowsFormsApplication1
                 x = 0;
                 y += 50;
             }
-            for (int i = 0; i < 0; i++) {
-                for (int a = 0; a < 18; a++)
-                {
-                    if (aliens[a].alienX == shoot[i].shootX && aliens[a].alienY == shoot[i].shootY && !aliens[a].deleted)
-                    {
-                        aliens[a].deleted = true;
-                    }
-                }
-            }
+            //for (int i = 0; i < 0; i++) {
+            //    for (int a = 0; a < 18; a++)
+            //    {
+            //        if (aliens[a].alienX <= shoot[i].shootX && aliens[a].alienY >= shoot[i].shootY && !aliens[a].deleted)
+            //        {
+            //            aliens[a].deleted = true;
+            //        }
+            //    }
+            //}
         }
 
 
@@ -101,7 +101,7 @@ namespace WindowsFormsApplication1
             {
                 for (int i = 0; i < 18; i++)
                 {
-                    aliens[i].alienX += 50;
+                    aliens[i].alienX += 5;
                 }
             }
             if (!f)
@@ -109,7 +109,7 @@ namespace WindowsFormsApplication1
                 {
                     for (int i = 0; i < 18; i++)
                     {
-                        aliens[i].alienX -= 50;
+                        aliens[i].alienX -= 5;
                     }
                 }
             }
@@ -174,14 +174,14 @@ namespace WindowsFormsApplication1
                 {
                     for (int i = 0;  i < 3; i++)
                     {
-                        shoot[i].shootY += 35;
+                        shoot[i].shootY += 5;
 
                     }
                 }
 
                 if (shoot[c].exist && shoot[c].your)
                 {
-                        shoot[c].shootY -= 35;
+                        shoot[c].shootY -= 15;
                 }
 
                 if (shoot[c].shootY >= height && !shoot[c].your)
@@ -200,6 +200,23 @@ namespace WindowsFormsApplication1
                     alive = false;
                     
                 }
+
+                    for (int a = 0; a < 18; a++)
+                    {
+                        if (aliens[a].alienX <= shoot[3].shootX && aliens[a].alienX + 50 >= shoot[3].shootX && aliens[a].alienY <= shoot[3].shootY && aliens[a].alienY + 50 >= shoot[3].shootY && !aliens[a].deleted)
+                        {
+                            aliens[a].deleted = true;
+                            shoot[3].exist = false;
+                            
+                        }
+                    }
+
+                    if (!shoot[3].exist)
+                {
+                    shoot[3].shootX = 0;
+                    shoot[3].shootY = 0;
+                }
+                
             }
             
         }

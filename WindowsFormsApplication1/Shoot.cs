@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1
         public bool exist { get; set; } 
         public int shootX { get; set; }
         public int shootY { get; set; }
-        public bool tib { get; set; } 
+        //public bool tib { get; set; } 
         public bool your { get; set; } 
     }
 }

@@ -15,10 +15,10 @@ namespace WindowsFormsApplication1
         Bitmap SpaceShipTexture = Resource1.Space_Ship, AlienTexture = Resource1.Alien, alienShot = Resource1.shot_ship, shipShot = Resource1.shot_alien;
         Game game = new Game();
         int pozition;
-        int i = 0;
-        int b = 0;
-        bool deleted = false;
-        int update;
+        //int i = 0;
+        //int b = 0;
+        //bool deleted = false;
+        //int update;
         public bool gameOver = false;
         bool active = false;
         public int shipX = 0;
@@ -33,13 +33,13 @@ namespace WindowsFormsApplication1
 
             
 
-            for (int a = 0; a < 1801; a -= 100)
-            {
+            //for (int a = 0; a < 1801; a -= 100)
+            //{
                
-                game.up[i] = a;
-            }
+            //    game.up[i] = a;
+            //}
 
-            update = timer2.Interval;
+            //update = Timer2.Interval;
 
             SetStyle(ControlStyles.OptimizedDoubleBuffer
                 | ControlStyles.AllPaintingInWmPaint
@@ -60,12 +60,12 @@ namespace WindowsFormsApplication1
             pictureBox1.Refresh();
             for (int i = 0; i > 18; i++)
             {
-                update = game.up[b];
-                deleted = game.aliens[i].deleted;
-                if (!deleted)
-                {
-                    b++;
-                }
+                //update = game.up[b];
+                //deleted = game.aliens[i].deleted;
+                //if (!deleted)
+                //{
+                //    b++;
+                //}
             }
             game.Shoot();
 
@@ -129,7 +129,7 @@ namespace WindowsFormsApplication1
                 //game.shoot[i] = new Shoot1();
                 g.DrawImage(alienShot, new Rectangle(game.shoot[i].shootX, game.shoot[i].shootY, 5, 35));
             }
-            if (active)
+            if (active && game.shoot[3].exist)
             {
                   g.DrawImage(shipShot, new Rectangle(game.shoot[3].shootX, game.shoot[3].shootY, 5, 35));
 
