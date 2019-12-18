@@ -40,6 +40,7 @@
             // timer2
             // 
             timer2.Enabled = true;
+            timer2.Interval = 25;
             timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // timer1
@@ -64,7 +65,7 @@
             // timer3
             // 
             this.timer3.Enabled = true;
-            this.timer3.Interval = 60;
+            this.timer3.Interval = 25;
             this.timer3.Tick += new System.EventHandler(this.Timer3_Tick);
             // 
             // Form1

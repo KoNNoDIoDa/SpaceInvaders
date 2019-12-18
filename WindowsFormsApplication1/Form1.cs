@@ -15,10 +15,6 @@ namespace WindowsFormsApplication1
         Bitmap SpaceShipTexture = Resource1.Space_Ship, AlienTexture = Resource1.Alien, alienShot = Resource1.shot_ship, shipShot = Resource1.shot_alien;
         Game game = new Game();
         int pozition;
-        //int i = 0;
-        //int b = 0;
-        //bool deleted = false;
-        //int update;
         public bool gameOver = false;
         bool active = false;
         public int shipX = 0;
@@ -31,21 +27,10 @@ namespace WindowsFormsApplication1
             }
             InitializeComponent();
 
-            
-
-            //for (int a = 0; a < 1801; a -= 100)
-            //{
-               
-            //    game.up[i] = a;
-            //}
-
-            //update = Timer2.Interval;
-
             SetStyle(ControlStyles.OptimizedDoubleBuffer
                 | ControlStyles.AllPaintingInWmPaint
                 | ControlStyles.UserPaint, true);
 
-            //game.AlienPosition();
             pozition = this.Width - 50;
 
            
@@ -97,8 +82,6 @@ namespace WindowsFormsApplication1
         private void timer2_Tick(object sender, EventArgs e) //Передвижения иноплпнитянинов
         {
             game.Movement(pozition);
-            
-            //pictureBox1.Refresh();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -126,7 +109,6 @@ namespace WindowsFormsApplication1
 
             for (int i = 0; i < 3; i++)
             {
-                //game.shoot[i] = new Shoot1();
                 g.DrawImage(alienShot, new Rectangle(game.shoot[i].shootX, game.shoot[i].shootY, 5, 35));
             }
             if (active && game.shoot[3].exist)
@@ -135,10 +117,6 @@ namespace WindowsFormsApplication1
 
             }
 
-            //g.DrawImage(shipShot, new Rectangle(100, 100, 5, 35));
-            //g.DrawImage(alienShot, new Rectangle(200, 200, 5, 35));
-
-            //SpaceShipRect = new Rectangle(/*game.aliens[i].alienX, game.aliens[i].alienY*/ShipX, this.Height - 90, 50, 50); //Присвоение положения корабля
             e.Graphics.DrawImage(SpaceShipTexture, SpaceShipRect); //Положение корабля
 
             if (!game.alive)
