@@ -29,19 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Timer timer2;
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer2
             // 
-            timer2.Enabled = true;
-            timer2.Interval = 25;
-            timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 25;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // timer1
             // 
@@ -88,6 +87,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

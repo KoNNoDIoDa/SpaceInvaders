@@ -12,10 +12,10 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        Bitmap SpaceShipTexture = Resource1.Space_Ship, AlienTexture = Resource1.Alien, alienShot = Resource1.shot_ship, shipShot = Resource1.shot_alien;
+        Bitmap SpaceShipTexture = Resource1.Space_Ship, AlienTexture = Resource1.Alien, alienShot = Resource1.shot_ship, shipShot = Resource1.shot_alien, kaboom = Resource1.Kaboom, gameOver = Resource1.GameOver;
         Game game = new Game();
         int pozition;
-        public bool gameOver = false;
+        //public bool gameOver = false;
         bool active = false;
         public int shipX = 0;
 
@@ -43,15 +43,6 @@ namespace WindowsFormsApplication1
             
             Refresh();
             pictureBox1.Refresh();
-            for (int i = 0; i > 18; i++)
-            {
-                //update = game.up[b];
-                //deleted = game.aliens[i].deleted;
-                //if (!deleted)
-                //{
-                //    b++;
-                //}
-            }
             game.Shoot();
 
 
@@ -82,6 +73,7 @@ namespace WindowsFormsApplication1
         private void timer2_Tick(object sender, EventArgs e) //Передвижения иноплпнитянинов
         {
             game.Movement(pozition);
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -97,9 +89,26 @@ namespace WindowsFormsApplication1
 
             Graphics g = e.Graphics;
 
+            if (!game.alive)
+            {
+                timer2.Enabled = false;
+                timer1.Enabled = false;
+                timer3.Enabled = false;
+            }
+
             var localPosition = this.PointToClient(Cursor.Position); //Присвоение положения инопланетянинов
             var SpaceShipRect = new Rectangle(shipX, this.Height - 90, 50, 50); //Присвоение положения корабля
-            e.Graphics.DrawImage(SpaceShipTexture, SpaceShipRect); //Положение корабля
+
+            if (game.alive)
+            {
+                e.Graphics.DrawImage(SpaceShipTexture, SpaceShipRect); //Положение корабля
+            }
+            if (!game.alive)
+            {
+                e.Graphics.DrawImage(kaboom, SpaceShipRect); //Отрисовка при проигрыше корабля
+                e.Graphics.DrawImage(gameOver, new Rectangle(this.Width / 2, this.Height / 2, 500, 500));
+
+            }
 
             for (int i = 0; i < 18; i++)
             {
@@ -117,12 +126,6 @@ namespace WindowsFormsApplication1
 
             }
 
-            e.Graphics.DrawImage(SpaceShipTexture, SpaceShipRect); //Положение корабля
-
-            if (!game.alive)
-            {
-
-            }
 
         }
     }

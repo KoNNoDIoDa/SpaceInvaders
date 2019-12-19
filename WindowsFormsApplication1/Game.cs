@@ -106,11 +106,18 @@ namespace WindowsFormsApplication1
             r = rnd.Next(0,2);
             rn = rnd.Next(2,3);
             rrn = rnd.Next(4,5);
-
-            aliens[r + g[r]].active = true;
-            aliens[rn + g[rn]].active = true;
-            aliens[rrn + g[rrn]].active = true;
-
+            if (g[r] >= 0)
+            {
+                aliens[r + g[r]].active = true;
+            }
+            if (g[rn] >= 0)
+            {
+                aliens[rn + g[rn]].active = true;
+            }
+            if (g[rrn] >= 0)
+            {
+                aliens[rrn + g[rrn]].active = true;
+            }
 
             for (int i = 0; i < 18; i++)
             {
@@ -128,15 +135,15 @@ namespace WindowsFormsApplication1
             aliens[rn + g[rn]].active = false;
             aliens[rrn + g[rrn]].active = false;
 
-            if (aliens[r + g[r]].deleted)
+            if (aliens[r + g[r]].deleted && g[r]!=0)
             {
                 g[r] -= 6;
             }
-            if (aliens[rn + g[rn]].deleted)
+            if (aliens[rn + g[rn]].deleted && g[rn] != 0)
             {
                 g[rn] -= 6;
             }
-            if (aliens[rrn + g[rrn]].deleted)
+            if (aliens[rrn + g[rrn]].deleted && g[rrn] != 0)
             {
                 g[rrn] -= 6;
             }
@@ -176,7 +183,7 @@ namespace WindowsFormsApplication1
                     shoot[c].exist = false;
                 }
 
-                if (shoot[c].shootX < height - 90 && shoot[c].shootX > (height - 90) - 50 && shoot[c].shootY < shipX && shoot[c].shootY > shipX + 50 && !shoot[c].your) //Попадание
+                if (shoot[c].shootY <= height - 90 && shoot[c].shootY >= height - 140 && shoot[c].shootX >= shipX && shoot[c].shootX <= shipX + 50 && !shoot[c].your) //Попадание
                 {
                     shoot[c].exist = false;
                     alive = false;
