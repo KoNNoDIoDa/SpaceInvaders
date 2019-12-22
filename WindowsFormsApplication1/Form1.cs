@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        Bitmap SpaceShipTexture = Resource1.Space_Ship, AlienTexture = Resource1.Alien, alienShot = Resource1.shot_ship, shipShot = Resource1.shot_alien, kaboom = Resource1.Kaboom, gameOver = Resource1.GameOver;
+        Bitmap SpaceShipTexture = Resource1.Space_Ship, AlienTexture = Resource1.Alien, alienShot = Resource1.shot_ship, shipShot = Resource1.shot_alien, kaboom = Resource1.Kaboom, gameOver = Resource1.GameOver, youWin = Resource1.YouWin;
         Game game = new Game();
         int pozition;
         //public bool gameOver = false;
@@ -68,6 +68,14 @@ namespace WindowsFormsApplication1
             {
                 shipX -= 35;
             }
+            if(e.KeyCode == Keys.F4)
+            {
+                game.m = 50;
+            }
+            if(e.KeyCode == Keys.F5)
+            {
+                game.ysm = 50;
+            }
         }
 
         private void timer2_Tick(object sender, EventArgs e) //Передвижения иноплпнитянинов
@@ -97,7 +105,7 @@ namespace WindowsFormsApplication1
             }
 
             var localPosition = this.PointToClient(Cursor.Position); //Присвоение положения инопланетянинов
-            var SpaceShipRect = new Rectangle(shipX, this.Height - 90, 50, 50); //Присвоение положения корабля
+            var SpaceShipRect = new Rectangle(shipX, this.Height-90, 50, 50); //Присвоение положения корабля
 
             if (game.alive)
             {
@@ -106,14 +114,27 @@ namespace WindowsFormsApplication1
             if (!game.alive)
             {
                 e.Graphics.DrawImage(kaboom, SpaceShipRect); //Отрисовка при проигрыше корабля
-                e.Graphics.DrawImage(gameOver, new Rectangle(this.Width / 2, this.Height / 2, 500, 500));
+                e.Graphics.DrawImage(gameOver, new Rectangle(this.Width /4, this.Height /4, 500, 500));
 
             }
 
             for (int i = 0; i < 18; i++)
             {
+                if (game.aliens[i].alienY == 0)
+                {
+                    e.Graphics.DrawImage(gameOver, new Rectangle(this.Width, this.Height, 500, 500));
+                }
                 if (!game.aliens[i].deleted)
-                g.DrawImage(AlienTexture, new Rectangle(game.aliens[i].alienX, game.aliens[i].alienY, 50, 50));
+                {
+                    g.DrawImage(AlienTexture, new Rectangle(game.aliens[i].alienX, game.aliens[i].alienY, 50, 50));
+                }
+            }
+            if (game.g[0] == 0 && game.g[1] == 0 && game.g[2] == 0 && game.g[3] == 0 && game.g[4] == 0 && game.g[5] == 0 && game.g[6] == 0)
+            {
+                e.Graphics.DrawImage(youWin, new Rectangle(this.Width / 4, this.Height / 4, 500, 500));
+                timer2.Enabled = false;
+                timer1.Enabled = false;
+                timer3.Enabled = false;
             }
 
             for (int i = 0; i < 3; i++)

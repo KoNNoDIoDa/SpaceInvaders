@@ -115,6 +115,12 @@
   <ItemGroup>
     <None Include="Resources\imgonline-com-ua-Transparent-backgr-j0x6XOjI7wL.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgonline-com-ua-Transparent-backgr-TM7Xa63SXLw9P1Z %285%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\YouWin.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

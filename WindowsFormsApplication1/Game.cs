@@ -18,7 +18,10 @@ namespace WindowsFormsApplication1
         int[] random = new int[3];
         int[] tru = new int[6];
         bool[] moving = new bool[3];
-        int[] g = { 12, 12, 12, 12, 12, 12 };
+        internal int[] g = { 12, 12, 12, 12, 12, 12 };
+        internal int m = 3;
+        internal int sm = 5;
+        internal int ysm = 15;
 
 
 
@@ -51,7 +54,10 @@ namespace WindowsFormsApplication1
 
             for (int i =0; i<18; i++)
             {
-                num = aliens[i].alienX;
+                if (!aliens[i].deleted)
+                {
+                    num = aliens[i].alienX;
+                }
 
                 if (num >= lens)
                 {
@@ -70,7 +76,7 @@ namespace WindowsFormsApplication1
             {
                 for (int i = 0; i < 18; i++)
                 {
-                    aliens[i].alienX += 3;
+                    aliens[i].alienX += m;
                 }
             }
             if (!f)
@@ -78,11 +84,11 @@ namespace WindowsFormsApplication1
                 {
                     for (int i = 0; i < 18; i++)
                     {
-                        aliens[i].alienX -= 3;
+                        aliens[i].alienX -= m;
                     }
                 }
             }
-            if (num <= 25 || num >= lens)
+            if (num <= 50 || num >= lens)
             {
                 for (int i = 0; i < 18; i++)
                 {
@@ -163,14 +169,14 @@ namespace WindowsFormsApplication1
                 {
                     for (int i = 0;  i < 3; i++)
                     {
-                        shoot[i].shootY += 5;
+                        shoot[i].shootY += sm;
 
                     }
                 }
 
                 if (shoot[c].exist && shoot[c].your)
                 {
-                        shoot[c].shootY -= 15;
+                        shoot[c].shootY -= ysm;
                 }
 
                 if (shoot[c].shootY >= height && !shoot[c].your)
@@ -213,7 +219,7 @@ namespace WindowsFormsApplication1
         {
                 shoot[3].exist = true;
                 shoot[3].shootX = shipX + 22;
-                shoot[3].shootY = height - 90;
+                shoot[3].shootY = height - 110;
                 shoot[3].your = true;
 
         }
