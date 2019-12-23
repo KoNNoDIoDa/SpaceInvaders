@@ -35,14 +35,14 @@ namespace WindowsFormsApplication1
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    x += 70;
+                    x += 105;
                     aliens[c] = new Aliens();
                     aliens[c].alienX = x;
                     aliens[c].alienY = y;
                     c++;
                 }
                 x = 0;
-                y += 50;
+                y += 75;
             }
         }
 
@@ -218,8 +218,8 @@ namespace WindowsFormsApplication1
         public void ShipShoot(int height, int shipX)
         {
                 shoot[3].exist = true;
-                shoot[3].shootX = shipX + 22;
-                shoot[3].shootY = height - 110;
+                shoot[3].shootX = shipX + 32;
+                shoot[3].shootY = height - 144;
                 shoot[3].your = true;
 
         }
