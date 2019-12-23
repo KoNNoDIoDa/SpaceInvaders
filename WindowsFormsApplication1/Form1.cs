@@ -91,11 +91,11 @@ namespace WindowsFormsApplication1
             }
             if (e.KeyCode == Keys.D)
             {
-                shipX += 35;
+                shipX += 65;
             }
             if (e.KeyCode == Keys.A)
             {
-                shipX -= 35;
+                shipX -= 65;
             }
 
 

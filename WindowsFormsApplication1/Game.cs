@@ -20,8 +20,8 @@ namespace WindowsFormsApplication1
         bool[] moving = new bool[3];
         internal int[] g = { 12, 12, 12, 12, 12, 12 };
         internal int m = 3;
-        internal int sm = 5;
-        internal int ysm = 15;
+        internal int sm = 10;
+        internal int ysm = 20;
 
 
 
@@ -198,7 +198,7 @@ namespace WindowsFormsApplication1
 
                 for (int a = 0; a < 18; a++)
                 {
-                    if (aliens[a].alienX <= shoot[3].shootX && aliens[a].alienX + 50 >= shoot[3].shootX && aliens[a].alienY <= shoot[3].shootY && aliens[a].alienY + 50 >= shoot[3].shootY && !aliens[a].deleted)
+                    if (aliens[a].alienX <= shoot[3].shootX && aliens[a].alienX + 75 >= shoot[3].shootX && aliens[a].alienY <= shoot[3].shootY && aliens[a].alienY + 75 >= shoot[3].shootY && !aliens[a].deleted)
                     {
                         aliens[a].deleted = true;
                         shoot[3].exist = false;   
@@ -219,7 +219,7 @@ namespace WindowsFormsApplication1
         {
                 shoot[3].exist = true;
                 shoot[3].shootX = shipX + 32;
-                shoot[3].shootY = height - 145;
+                shoot[3].shootY = height - 160;
                 shoot[3].your = true;
 
         }
