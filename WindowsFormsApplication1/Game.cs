@@ -219,7 +219,7 @@ namespace WindowsFormsApplication1
         {
                 shoot[3].exist = true;
                 shoot[3].shootX = shipX + 32;
-                shoot[3].shootY = height - 144;
+                shoot[3].shootY = height - 145;
                 shoot[3].your = true;
 
         }
