@@ -165,7 +165,7 @@ namespace WindowsFormsApplication1
                 sound = true;
                 timer2.Enabled = false;
                 timer3.Enabled = false;
-                SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\mushr\Desktop\Space Invaders\Dio.wav");
+                SoundPlayer simpleSound = new SoundPlayer(@"F:\Space Invaders\Dio.wav");
                 simpleSound.Play();
                 
                 
